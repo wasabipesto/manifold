@@ -19,7 +19,7 @@ export const updateContractMetrics = functions.pubsub
     )
 
     await batchedWaitAll(
-      contracts.map((contract) => async () => {
+      contracts.map(async (contract) => {
         const volume24Hours = await computeVolumeFrom(contract, oneDay)
         const volume7Days = await computeVolumeFrom(contract, oneDay * 7)
 

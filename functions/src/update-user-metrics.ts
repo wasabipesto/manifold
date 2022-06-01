@@ -24,7 +24,7 @@ export const updateUserMetrics = functions.pubsub
     )
 
     await batchedWaitAll(
-      users.map((user) => async () => {
+      users.map(async (user) => {
         const [investmentValue, creatorVolume] = await Promise.all([
           computeInvestmentValue(user, contractsDict),
           computeTotalPool(user, contractsDict),

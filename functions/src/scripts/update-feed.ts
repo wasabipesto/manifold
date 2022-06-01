@@ -24,7 +24,7 @@ async function updateFeed() {
   )
 
   await batchedWaitAll(
-    users.map((user) => async () => {
+    users.map(async (user) => {
       console.log('Updating recs for', user.username)
       await updateWordScores(user, contracts)
       console.log('Updating feed for', user.username)
@@ -35,7 +35,7 @@ async function updateFeed() {
   console.log('Updating feed categories!')
 
   await batchedWaitAll(
-    users.map((user) => async () => {
+    users.map(async (user) => {
       for (const category of CATEGORY_LIST) {
         const contracts = await getTaggedContracts(category)
         const feed = await computeFeed(user, contracts)

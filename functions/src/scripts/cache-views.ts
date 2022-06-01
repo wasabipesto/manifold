@@ -16,9 +16,9 @@ async function cacheViews() {
   const users = await getValues<User>(firestore.collection('users'))
 
   await batchedWaitAll(
-    users.map((user) => () => {
+    users.map(async (user) => {
       console.log('Caching views for', user.username)
-      return cacheUserViews(user.id)
+      return await cacheUserViews(user.id)
     })
   )
 }

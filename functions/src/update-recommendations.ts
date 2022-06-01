@@ -38,9 +38,7 @@ export const updateRecommendationsBatch = functions.https.onCall(
       firestore.collection('contracts')
     )
 
-    await batchedWaitAll(
-      users.map((user) => () => updateWordScores(user, contracts))
-    )
+    await batchedWaitAll(users.map((user) => updateWordScores(user, contracts)))
   }
 )
 

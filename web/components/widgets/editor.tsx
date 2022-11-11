@@ -33,7 +33,6 @@ import { StickyFormatMenu } from '../editor/sticky-format-menu'
 import TiptapTweet from '../editor/tiptap-tweet'
 import { Upload, useUploadMutation } from '../editor/upload-extension'
 import { insertContent } from '../editor/utils'
-import { EmojiExtension } from '../editor/emoji/emoji-extension'
 
 const DisplayImage = Image.configure({
   HTMLAttributes: {
@@ -58,7 +57,6 @@ export const editorExtensions = (simple = false): Extensions => [
     horizontalRule: simple ? false : {},
   }),
   simple ? DisplayImage : Image,
-  EmojiExtension,
   DisplayLink,
   DisplayMention,
   DisplayContractMention,
